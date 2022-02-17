@@ -22,7 +22,7 @@ public class BeanFactoryTests {
         beanFactory.registerBeanDefinition("userService", beanDefinition);
 
         // 3.第一次获取 bean
-        UserService userService = (UserService) beanFactory.getBean("userService");
+        UserService userService = (UserService) beanFactory.getBean("userService", "binarywz");
         userService.queryUserInfo();
 
         // 4.第二次获取 bean from Singleton
