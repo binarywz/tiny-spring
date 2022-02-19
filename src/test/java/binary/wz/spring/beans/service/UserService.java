@@ -8,20 +8,20 @@ import binary.wz.spring.beans.dao.UserDao;
  * @description:
  */
 public class UserService {
-    private String uId;
+    private String userId;
 
     private UserDao userDao;
 
-    public void queryUserInfo() {
-        System.out.println("query user info: {}" + userDao.queryUserName(uId));
+    public String queryUserInfo() {
+        return userDao.queryUserName(userId);
     }
 
-    public String getuId() {
-        return uId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public UserDao getUserDao() {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="userDao" class="binary.wz.spring.beans.dao.UserDao"/>
+
+    <bean id="userService" class="binary.wz.spring.beans.service.UserService">
+        <property name="userId" value="10001"/>
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+</beans>

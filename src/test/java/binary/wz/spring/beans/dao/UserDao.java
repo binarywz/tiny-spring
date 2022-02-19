@@ -13,8 +13,8 @@ public class UserDao {
         hashMap.put("10003", "Kobe");
     }
 
-    public String queryUserName(String uId) {
-        return hashMap.get(uId);
+    public String queryUserName(String userId) {
+        return hashMap.get(userId);
     }
 
 }
