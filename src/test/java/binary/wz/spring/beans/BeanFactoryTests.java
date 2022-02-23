@@ -5,7 +5,10 @@ import binary.wz.spring.beans.factory.config.BeanDefinition;
 import binary.wz.spring.beans.factory.config.BeanReference;
 import binary.wz.spring.beans.factory.support.DefaultListableBeanFactory;
 import binary.wz.spring.beans.factory.xml.XmlBeanDefinitionReader;
+import binary.wz.spring.beans.processor.MyBeanFactoryPostProcessor;
+import binary.wz.spring.beans.processor.MyBeanPostProcessor;
 import binary.wz.spring.beans.service.UserService;
+import binary.wz.spring.context.support.ClassPathXmlApplicationContext;
 import binary.wz.spring.core.io.DefaultResourceLoader;
 import binary.wz.spring.core.io.Resource;
 import cn.hutool.core.io.IoUtil;
@@ -85,6 +88,40 @@ public class BeanFactoryTests {
 
         // 3. 获取Bean对象调用方法
         UserService userService = beanFactory.getBean("userService", UserService.class);
+        String result = userService.queryUserInfo();
+        System.out.println("测试结果：" + result);
+    }
+
+    @Test
+    public void testBeanFactoryPostProcessorAndBeanPostProcessor(){
+        // 1.初始化 BeanFactory
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+        // 2. 读取配置文件&注册Bean
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+        reader.loadBeanDefinitions("classpath:spring.xml");
+
+        // 3. BeanDefinition 加载完成 & Bean实例化之前，修改 BeanDefinition 的属性值
+        MyBeanFactoryPostProcessor beanFactoryPostProcessor = new MyBeanFactoryPostProcessor();
+        beanFactoryPostProcessor.postProcessBeanFactory(beanFactory);
+
+        // 4. Bean实例化之后，修改 Bean 属性信息
+        MyBeanPostProcessor beanPostProcessor = new MyBeanPostProcessor();
+        beanFactory.addBeanPostProcessor(beanPostProcessor);
+
+        // 5. 获取Bean对象调用方法
+        UserService userService = beanFactory.getBean("userService", UserService.class);
+        String result = userService.queryUserInfo();
+        System.out.println("测试结果: " + result);
+    }
+
+    @Test
+    public void testClassPathXmlApplicationContext() {
+        // 1.初始化 BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:springPostProcessor.xml");
+
+        // 2. 获取Bean对象调用方法
+        UserService userService = applicationContext.getBean("userService", UserService.class);
         String result = userService.queryUserInfo();
         System.out.println("测试结果：" + result);
     }

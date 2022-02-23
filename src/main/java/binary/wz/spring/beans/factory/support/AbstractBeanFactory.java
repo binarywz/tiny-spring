@@ -1,15 +1,22 @@
 package binary.wz.spring.beans.factory.support;
 
 import binary.wz.spring.beans.BeansException;
-import binary.wz.spring.beans.factory.BeanFactory;
 import binary.wz.spring.beans.factory.config.BeanDefinition;
+import binary.wz.spring.beans.factory.config.BeanPostProcessor;
+import binary.wz.spring.beans.factory.config.ConfigurableBeanFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author binarywz
  * @date 2022/2/15 23:46
  * @description:
  */
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
+
+    /** BeanPostProcessors to apply in createBean */
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
 
     @Override
     public Object getBean(String name) throws BeansException {
@@ -39,4 +46,18 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException;
+
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
+        this.beanPostProcessors.remove(beanPostProcessor);
+        this.beanPostProcessors.add(beanPostProcessor);
+    }
+
+    /**
+     * Return the list of BeanPostProcessors that will get applied
+     * to beans created with this factory.
+     */
+    public List<BeanPostProcessor> getBeanPostProcessors() {
+        return this.beanPostProcessors;
+    }
 }

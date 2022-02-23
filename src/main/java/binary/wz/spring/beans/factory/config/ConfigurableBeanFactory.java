@@ -1,6 +1,7 @@
 package binary.wz.spring.beans.factory.config;
 
 import binary.wz.spring.beans.factory.BeanFactory;
+import binary.wz.spring.beans.factory.HierarchicalBeanFactory;
 
 /**
  * @author binarywz
@@ -9,10 +10,12 @@ import binary.wz.spring.beans.factory.BeanFactory;
  * facilities to configure a bean factory, in addition to the bean factory
  * client methods in the {@link BeanFactory} interface.
  */
-public interface ConfigurableBeanFactory {
+public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, SingletonBeanRegistry {
 
     String SCOPE_SINGLETON = "singleton";
 
     String SCOPE_PROTOTYPE = "prototype";
+
+    void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
 
 }
