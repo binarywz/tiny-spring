@@ -1,13 +1,15 @@
 package binary.wz.spring.beans.service;
 
 import binary.wz.spring.beans.dao.UserDao;
+import binary.wz.spring.beans.factory.DisposableBean;
+import binary.wz.spring.beans.factory.InitializingBean;
 
 /**
  * @author binarywz
  * @date 2022/2/16 0:01
  * @description:
  */
-public class UserService {
+public class UserService implements InitializingBean, DisposableBean {
 
     private String userId;
     private String company;
@@ -48,5 +50,15 @@ public class UserService {
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("执行: UserService.destroy");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("执行: UserService.afterPropertiesSet");
     }
 }
