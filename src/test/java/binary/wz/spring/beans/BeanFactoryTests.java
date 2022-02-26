@@ -8,6 +8,7 @@ import binary.wz.spring.beans.factory.xml.XmlBeanDefinitionReader;
 import binary.wz.spring.beans.processor.MyBeanFactoryPostProcessor;
 import binary.wz.spring.beans.processor.MyBeanPostProcessor;
 import binary.wz.spring.beans.service.UserService;
+import binary.wz.spring.beans.service.UserServiceAware;
 import binary.wz.spring.context.support.ClassPathXmlApplicationContext;
 import binary.wz.spring.core.io.DefaultResourceLoader;
 import binary.wz.spring.core.io.Resource;
@@ -141,5 +142,21 @@ public class BeanFactoryTests {
         UserService userService = applicationContext.getBean("userService", UserService.class);
         String result = userService.queryUserInfo();
         System.out.println("测试结果: " + result);
+    }
+
+    @Test
+    public void testAware() {
+        // 1.初始化 BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-aware.xml");
+        applicationContext.registerShutdownHook();
+
+        // 2. 获取Bean对象调用方法
+        UserServiceAware userServiceAware = applicationContext.getBean("userServiceAware", UserServiceAware.class);
+        String result = userServiceAware.queryUserInfo();
+        System.out.println("测试结果: " + result);
+
+        System.out.println("ClassPathXmlApplicationContext: " + applicationContext);
+        System.out.println("ApplicationContextAware: " + userServiceAware.getApplicationContext());
+        System.out.println("BeanFactoryAware: " + userServiceAware.getBeanFactory());
     }
 }
