@@ -1,4 +1,4 @@
-package binary.wz.spring.beans.dao;
+package binary.wz.spring.beans.beanfactory.dao;
 
 import java.util.HashMap;
 import java.util.Map;

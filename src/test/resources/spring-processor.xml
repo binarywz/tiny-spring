@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
 
-    <bean id="userDao" class="binary.wz.spring.beans.dao.UserDao"/>
+    <bean id="userDao" class="binary.wz.spring.beans.beanfactory.dao.UserDao"/>
 
-    <bean id="userService" class="binary.wz.spring.beans.service.UserService">
+    <bean id="userService" class="binary.wz.spring.beans.beanfactory.service.UserService">
         <property name="userId" value="10001"/>
         <property name="company" value="腾讯"/>
         <property name="location" value="深圳"/>
         <property name="userDao" ref="userDao"/>
     </bean>
 
-    <bean class="binary.wz.spring.beans.processor.MyBeanFactoryPostProcessor"/>
-    <bean class="binary.wz.spring.beans.processor.MyBeanPostProcessor"/>
+    <bean class="binary.wz.spring.beans.beanfactory.processor.MyBeanFactoryPostProcessor"/>
+    <bean class="binary.wz.spring.beans.beanfactory.processor.MyBeanPostProcessor"/>
 
 </beans>

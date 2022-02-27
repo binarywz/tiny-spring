@@ -1,4 +1,4 @@
-package binary.wz.spring.beans.processor;
+package binary.wz.spring.beans.beanfactory.processor;
 
 import binary.wz.spring.beans.BeansException;
 import binary.wz.spring.beans.PropertyValue;

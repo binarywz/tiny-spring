@@ -1,6 +1,6 @@
-package binary.wz.spring.beans.service;
+package binary.wz.spring.beans.beanfactory.service;
 
-import binary.wz.spring.beans.dao.UserDao;
+import binary.wz.spring.beans.beanfactory.dao.UserDao;
 import binary.wz.spring.beans.factory.DisposableBean;
 import binary.wz.spring.beans.factory.InitializingBean;
 

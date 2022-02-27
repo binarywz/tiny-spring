@@ -1,8 +1,8 @@
-package binary.wz.spring.beans.processor;
+package binary.wz.spring.beans.beanfactory.processor;
 
 import binary.wz.spring.beans.BeansException;
 import binary.wz.spring.beans.factory.config.BeanPostProcessor;
-import binary.wz.spring.beans.service.UserService;
+import binary.wz.spring.beans.beanfactory.service.UserService;
 
 public class MyBeanPostProcessor implements BeanPostProcessor {
 

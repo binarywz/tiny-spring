@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="userService" class="binary.wz.spring.beans.factorybean.service.UserService" scope="prototype">
+        <property name="userId" value="10001"/>
+        <property name="company" value="阿里"/>
+        <property name="location" value="杭州"/>
+        <property name="userDao" ref="proxyUserDao"/>
+    </bean>
+
+    <bean id="proxyUserDao" class="binary.wz.spring.beans.factorybean.proxy.ProxyBeanFactory"/>
+
+</beans>

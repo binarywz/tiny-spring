@@ -1,7 +1,7 @@
-package binary.wz.spring.beans.service;
+package binary.wz.spring.beans.beanfactory.service;
 
 import binary.wz.spring.beans.BeansException;
-import binary.wz.spring.beans.dao.UserDao;
+import binary.wz.spring.beans.beanfactory.dao.UserDao;
 import binary.wz.spring.beans.factory.BeanClassLoaderAware;
 import binary.wz.spring.beans.factory.BeanFactory;
 import binary.wz.spring.beans.factory.BeanFactoryAware;

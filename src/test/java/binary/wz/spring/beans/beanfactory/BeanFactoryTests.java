@@ -1,14 +1,16 @@
-package binary.wz.spring.beans;
+package binary.wz.spring.beans.beanfactory;
 
-import binary.wz.spring.beans.dao.UserDao;
+import binary.wz.spring.beans.PropertyValue;
+import binary.wz.spring.beans.PropertyValues;
+import binary.wz.spring.beans.beanfactory.dao.UserDao;
 import binary.wz.spring.beans.factory.config.BeanDefinition;
 import binary.wz.spring.beans.factory.config.BeanReference;
 import binary.wz.spring.beans.factory.support.DefaultListableBeanFactory;
 import binary.wz.spring.beans.factory.xml.XmlBeanDefinitionReader;
-import binary.wz.spring.beans.processor.MyBeanFactoryPostProcessor;
-import binary.wz.spring.beans.processor.MyBeanPostProcessor;
-import binary.wz.spring.beans.service.UserService;
-import binary.wz.spring.beans.service.UserServiceAware;
+import binary.wz.spring.beans.beanfactory.processor.MyBeanFactoryPostProcessor;
+import binary.wz.spring.beans.beanfactory.processor.MyBeanPostProcessor;
+import binary.wz.spring.beans.beanfactory.service.UserService;
+import binary.wz.spring.beans.beanfactory.service.UserServiceAware;
 import binary.wz.spring.context.support.ClassPathXmlApplicationContext;
 import binary.wz.spring.core.io.DefaultResourceLoader;
 import binary.wz.spring.core.io.Resource;
