@@ -1,7 +1,8 @@
 package binary.wz.spring.context;
 
-import binary.wz.spring.beans.factory.BeanFactory;
+import binary.wz.spring.beans.factory.HierarchicalBeanFactory;
 import binary.wz.spring.beans.factory.ListableBeanFactory;
+import binary.wz.spring.core.io.ResourceLoader;
 
 /**
  * @author binarywz
@@ -11,5 +12,5 @@ import binary.wz.spring.beans.factory.ListableBeanFactory;
  * This is read-only while the application is running, but may be
  * reloaded if the implementation supports this.
  */
-public interface ApplicationContext extends ListableBeanFactory {
+public interface ApplicationContext extends ListableBeanFactory, HierarchicalBeanFactory, ResourceLoader, ApplicationEventPublisher {
 }

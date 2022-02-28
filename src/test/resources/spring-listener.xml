@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean class="binary.wz.spring.beans.appevent.listener.ContextRefreshedEventListener"/>
+
+    <bean class="binary.wz.spring.beans.appevent.listener.CustomEventListener"/>
+
+    <bean class="binary.wz.spring.beans.appevent.listener.ContextClosedEventListener"/>
+
+</beans>
