@@ -9,7 +9,7 @@ import org.junit.Test;
  * @date 2022/2/28 23:24
  * @description:
  */
-public class ApplicationListenerTests {
+public class ApplicationListenerTest {
 
     @Test
     public void testEvent() {

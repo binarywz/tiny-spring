@@ -26,7 +26,7 @@ import java.io.InputStream;
  * @date 2022/2/16 0:01
  * @description:
  */
-public class BeanFactoryTests {
+public class BeanFactoryTest {
     @Test
     public void testBeanFactory(){
         // 1.初始化 BeanFactory

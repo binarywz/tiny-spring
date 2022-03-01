@@ -10,7 +10,7 @@ import org.openjdk.jol.info.ClassLayout;
  * @date 2022/2/27 22:02
  * @description:
  */
-public class FactoryBeanTests {
+public class FactoryBeanTest {
 
     @Test
     public void testPrototype() {
