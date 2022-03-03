@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="userService" class="binary.wz.spring.beans.aop.service.UserService"/>
+
+    <bean class="binary.wz.spring.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+
+    <bean id="beforeAdvice" class="binary.wz.spring.beans.aop.advice.UserServiceBeforeAdvice"/>
+
+    <bean id="methodInterceptor" class="binary.wz.spring.aop.framework.adapter.MethodBeforeAdviceInterceptor">
+        <property name="advice" ref="beforeAdvice"/>
+    </bean>
+
+    <bean id="pointcutAdvisor" class="binary.wz.spring.aop.aspectj.AspectJExpressionPointcutAdvisor">
+        <property name="expression" value="execution(* binary.wz.spring.beans.aop.service.IUserService.*(..))"/>
+        <property name="advice" ref="methodInterceptor"/>
+    </bean>
+
+</beans>

@@ -10,7 +10,9 @@ import binary.wz.spring.aop.framework.ReflectiveMethodInvocation;
 import binary.wz.spring.beans.aop.interceptor.UserServiceInterceptor;
 import binary.wz.spring.beans.aop.service.IUserService;
 import binary.wz.spring.beans.aop.service.UserService;
+import binary.wz.spring.context.support.ClassPathXmlApplicationContext;
 import org.aopalliance.intercept.MethodInterceptor;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationHandler;
@@ -98,6 +100,14 @@ public class AopTest {
         String result = proxy.queryUserInfo();
         System.out.println("测试结果: " + result);
 
+    }
+
+    @Test
+    public void testSpringAop() {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-aop.xml");
+
+        IUserService userService = applicationContext.getBean("userService", IUserService.class);
+        System.out.println("测试结果: " + userService.queryUserInfo());
     }
 
 }
