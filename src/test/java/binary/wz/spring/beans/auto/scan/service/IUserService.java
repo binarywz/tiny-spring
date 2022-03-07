@@ -1,4 +1,4 @@
-package binary.wz.spring.beans.scan.service;
+package binary.wz.spring.beans.auto.scan.service;
 
 /**
  * @author binarywz

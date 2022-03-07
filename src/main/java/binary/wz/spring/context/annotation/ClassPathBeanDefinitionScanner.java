@@ -1,5 +1,6 @@
 package binary.wz.spring.context.annotation;
 
+import binary.wz.spring.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import binary.wz.spring.beans.factory.config.BeanDefinition;
 import binary.wz.spring.beans.factory.support.BeanDefinitionRegistry;
 import binary.wz.spring.stereotype.Component;
@@ -32,6 +33,10 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
                 registry.registerBeanDefinition(determineBeanName(beanDefinition), beanDefinition);
             }
         }
+
+        // 注册处理注解的 BeanPostProcessor（@Autowired、@Value）
+        registry.registerBeanDefinition("binary.wz.spring.context.annotation.internalAutowiredAnnotationProcessor",
+                new BeanDefinition(AutowiredAnnotationBeanPostProcessor.class));
     }
 
     private String resolveBeanScope(BeanDefinition beanDefinition) {

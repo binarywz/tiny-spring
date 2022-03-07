@@ -4,6 +4,7 @@ import binary.wz.spring.aop.*;
 import binary.wz.spring.aop.aspectj.AspectJExpressionPointcutAdvisor;
 import binary.wz.spring.aop.framework.ProxyFactory;
 import binary.wz.spring.beans.BeansException;
+import binary.wz.spring.beans.PropertyValues;
 import binary.wz.spring.beans.factory.BeanFactory;
 import binary.wz.spring.beans.factory.BeanFactoryAware;
 import binary.wz.spring.beans.factory.config.InstantiationAwareBeanPostProcessor;
@@ -25,16 +26,6 @@ public class DefaultAdvisorAutoProxyCreator implements InstantiationAwareBeanPos
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         this.beanFactory = (DefaultListableBeanFactory) beanFactory;
-    }
-
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        return bean;
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        return bean;
     }
 
     @Override
@@ -63,6 +54,21 @@ public class DefaultAdvisorAutoProxyCreator implements InstantiationAwareBeanPos
             return new ProxyFactory(advisedSupport).getProxy();
         }
         return null;
+    }
+
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+
+    @Override
+    public PropertyValues postProcessPropertyValues(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+        return pvs;
     }
 
     private boolean isInfrastructureClass(Class<?> beanClass) {

@@ -1,6 +1,6 @@
-package binary.wz.spring.beans.scan;
+package binary.wz.spring.beans.auto.scan;
 
-import binary.wz.spring.beans.scan.service.IUserService;
+import binary.wz.spring.beans.auto.scan.service.IUserService;
 import binary.wz.spring.context.support.ClassPathXmlApplicationContext;
 import org.junit.Test;
 
